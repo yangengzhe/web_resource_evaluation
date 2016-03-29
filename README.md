@@ -33,7 +33,7 @@ JMeter是个很好的测试工具，使用帮助：http://www.i3geek.com/archive
 
 原理：定时通过访问应用，抓取xml。解析xml，获取关键数据，进行分析并记录。
 
-项目地址：
+项目地址：https://github.com/yangengzhe/tomcat_status
 
 ### 技术基础
 
