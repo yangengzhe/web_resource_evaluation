@@ -25,7 +25,7 @@ public class jmeterRunnable implements Runnable {
         String cmd = "cd /usr/local/apache-jmeter-2.13/bin/ ;sh jmeter -n -t /Users/yangengzhe/Documents/云平台/物流_游客查询.jmx -Jthread="+threads+" -Jipadress="+ipadress;
         summarys = parseReport.parsePojo(execLinux.exec(cmd).toString());
         time = System.currentTimeMillis() - time;
-        System.out.println("JMeter：当"+threads+"个用户并发时，吞吐率="+summarys.getThroughput()+"，用时："+time/1000f);
+        System.out.println("JMeter：当"+threads+"个用户并发时，吞吐率="+summarys.getThroughput()+"，错误率："+summarys.getError()+"%，用时："+time/1000f);
         
         synchronized (global) {
             global.jmeter_run = false;
