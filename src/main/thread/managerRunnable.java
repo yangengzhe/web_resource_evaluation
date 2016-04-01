@@ -28,7 +28,7 @@ public class managerRunnable implements Runnable {
                 times++;
             }
             try {
-                Thread.sleep(40*1000);
+                Thread.sleep(30*1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

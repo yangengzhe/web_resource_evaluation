@@ -1,8 +1,9 @@
 package main.thread;
 
-import jmeter.jmx.pojo.summaryPojo;
-import jmeter.jmx.util.execLinux;
-import jmeter.jmx.util.parseReport;
+import com.jmeter.jmx.pojo.summaryPojo;
+import com.jmeter.jmx.util.execLinux;
+import com.jmeter.jmx.util.parseReport;
+
 import main.common.Global;
 
 public class jmeterRunnable implements Runnable {
