@@ -12,7 +12,7 @@ public class performance {
         managerRunnable mr = new managerRunnable(global);
         systemStatusRunnable ssr = new systemStatusRunnable(global);
         long time;
-        int[] threads = {450};
+        int[] threads = {50};
         for(int i = 0 ;i<threads.length;i++){
             time = System.currentTimeMillis();
             global.threads=threads[i];

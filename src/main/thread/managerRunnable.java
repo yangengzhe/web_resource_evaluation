@@ -17,7 +17,7 @@ public class managerRunnable implements Runnable {
         synchronized (global) {
             global.manager_run = true;
         }
-        float[] t_avgTime={0f,0f};
+        float[] t_avgTime={0f,0f,0f};
         int times=0;
         long time = System.currentTimeMillis();
         while(global.jmeter_run){
@@ -25,6 +25,7 @@ public class managerRunnable implements Runnable {
             if(avgTime[0]>=0){//<0是无工作
                 t_avgTime[0] += avgTime[0];
                 t_avgTime[1] += avgTime[1];
+                t_avgTime[2] += avgTime[2];
                 times++;
             }
             try {
@@ -35,7 +36,7 @@ public class managerRunnable implements Runnable {
         }
         time = System.currentTimeMillis()-time-3000;
         int threads=global.threads;
-        System.out.println("Manager：共测量次数："+times+"次，当"+threads+"个用户并发时，平均响应时间="+t_avgTime[0]/times+" ，本地响应时间"+t_avgTime[1]/times+"，用时："+time/1000f);
+        System.out.println("Manager：共测量次数："+times+"次，当"+threads+"个用户并发时，平均响应时间="+t_avgTime[0]/times+" ，本地响应时间"+t_avgTime[1]/times+"，内存使用："+t_avgTime[2]/times+"M。用时："+time/1000f);
         
         synchronized (global) {
             global.manager_run = false;

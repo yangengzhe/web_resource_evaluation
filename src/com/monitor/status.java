@@ -72,7 +72,7 @@ public class status {
     * @author ygz 下午4:44:31
     */
    public static float[] getThoughput(String url,String port,String user,String pass) {
-       float[] result = new float[2];
+       float[] result = new float[3];
        try {
            Long Rstart,Rend;//请求数
            Long start_time,end_time,spend_time;//时间记录
@@ -92,6 +92,8 @@ public class status {
            float total_time = (end_time-start_time)/1000f;
            result[0] = total_time/(Rend-Rstart);//平均处理时间
            result[1] = spend_time/2000f;//程序监控时间吞吐率
+           long jvm_used = tomcat_status.getJvm_memory_total()-tomcat_status.getJvm_memory_free();
+           result[2] = jvm_used /1024f/1024f;//jvm内存使用（M）
            if(connector.getThread_currentThreadBusy()<=1)
                result[0]=-1;//没有线程在运行
        }
@@ -99,7 +101,9 @@ public class status {
            System.err.println(e);
            result[0]=0;
            result[1]=0;
+           result[2]=0;
        }
        return result;
    }
+   
 }
